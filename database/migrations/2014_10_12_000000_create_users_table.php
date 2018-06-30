@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->engine = 'InnoDB'; //指定表存储引擎 (MySQL)
+            $table->charset = 'utf8'; //指定数据表的默认字符集 (MySQL)
+            $table->collation = 'utf8_unicode_ci'; //创建临时表(不支持SQL Server).
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema; //手动加上去的，原来文件中没有
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //自己修改的，为了解决数据库迁移的时候报错
+         Schema::defaultStringLength(191);
     }
 
     /**
