@@ -12,6 +12,12 @@ class User extends Authenticatable
     use Notifiable;
     protected $table = 'users';
 
+    //在用户模型中，指明一个用户拥有多条微博，一对多。
+    public function statuses()
+    {
+        return $this->hasMany(Status::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *允许被更新的字段
@@ -29,6 +35,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**获取用户自己以及关注的人的所有微博
+     * @return $this
+     */
+    public function feed()
+    {
+        return $this->statuses()
+            ->orderBy('created_at', 'desc');
+    }
 
     /**生成全球通用的头像
      * @param string $size
