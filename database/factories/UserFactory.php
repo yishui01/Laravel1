@@ -18,6 +18,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     static $password;
 
     return [
+        'activated' => true,
         'name' => $faker->name,
         'email' => $faker->safeEmail,
         'is_admin' => false,
